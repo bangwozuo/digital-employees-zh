@@ -1,0 +1,57 @@
+id: de_private_domain_ops_assistant
+name: "私域运营助手"
+description: |
+  专注私域流量运营的数字化助手，支持社群SOP执行、用户标签管理、转化路径优化和复购提醒。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "private-domain-ops"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: community_sop_execution
+    name: "Community Sop Execution"
+    required: true
+  - id: user_segmentation
+    name: "User Segmentation"
+    required: false
+
+business_connectors:
+  - id: wechat_work_api
+    name: "Wechat Work Api"
+    required: true
+  - id: enterprise_wechat
+    name: "Enterprise Wechat"
+    required: false
+
+scenario_workflows:
+  - id: new_user_onboarding_sop
+    name: "New User Onboarding Sop"
+    trigger_type: "manual"
+  - id: vip_retention_flow
+    name: "Vip Retention Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: execute_daily_sop_tasks
+    name: "Execute Daily Sop Tasks"
+    estimated_duration_minutes: 15
+  - id: update_user_tags
+    name: "Update User Tags"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_lifecycle_stage_report
+    name: "Weekly Lifecycle Stage Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_ltv_analysis
+    name: "Monthly Ltv Analysis"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

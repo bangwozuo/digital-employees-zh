@@ -1,0 +1,11 @@
+id: customer-service
+name: "客户服务"
+name_en: "Customer Service"
+description: |
+  为企业客服中心提供FAQ自动应答、工单分类、知识库维护、服务质量监控等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - customer-service
+  - zh-cn
+  - sme

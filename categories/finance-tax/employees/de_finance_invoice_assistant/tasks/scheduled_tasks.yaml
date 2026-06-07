@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_finance_invoice_assistant
+
+tasks:
+  - id: weekly_cashflow_forecast
+    name: "Weekly Cashflow Forecast"
+    description: |
+      定时任务：weekly cashflow forecast。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - invoice_verification
+    required_connectors:
+      - tax_platform_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_tax_compliance_check
+    name: "Monthly Tax Compliance Check"
+    description: |
+      定时任务：monthly tax compliance check。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - expense_audit
+    required_connectors:
+      - bank_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

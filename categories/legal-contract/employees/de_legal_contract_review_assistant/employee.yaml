@@ -1,0 +1,57 @@
+id: de_legal_contract_review_assistant
+name: "法务合同审查助手"
+description: |
+  基于法律知识和企业合规要求的合同审查数字员工，支持风险条款识别、合规检查、模板推荐和审批流转。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "legal-contract"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: contract_risk_scan
+    name: "Contract Risk Scan"
+    required: true
+  - id: compliance_check
+    name: "Compliance Check"
+    required: false
+
+business_connectors:
+  - id: e_signature_api
+    name: "E Signature Api"
+    required: true
+  - id: company_registry_api
+    name: "Company Registry Api"
+    required: false
+
+scenario_workflows:
+  - id: contract_intake_flow
+    name: "Contract Intake Flow"
+    trigger_type: "manual"
+  - id: risk_review_flow
+    name: "Risk Review Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: scan_pending_contracts
+    name: "Scan Pending Contracts"
+    estimated_duration_minutes: 15
+  - id: update_compliance_rulebase
+    name: "Update Compliance Rulebase"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_contract_volume_report
+    name: "Weekly Contract Volume Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_risk_trend_analysis
+    name: "Monthly Risk Trend Analysis"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

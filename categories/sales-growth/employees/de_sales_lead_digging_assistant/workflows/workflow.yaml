@@ -1,0 +1,50 @@
+id: lead_to_mql_flow
+name: "Lead To Mql Flow"
+description: |
+  场景工作流：lead to mql flow。
+  自动化执行 销售线索挖掘助手 的核心业务流程。
+version: "1.0.0"
+author: "digital-employee-community"
+type: "scenario_workflow"
+
+triggers:
+  - type: "manual"
+    config:
+      description: "用户手动触发"
+  - type: "scheduled"
+    config:
+      cron_expression: "0 9 * * *"
+      timezone: "Asia/Shanghai"
+
+steps:
+  - id: "start"
+    name: "Start"
+    type: "start"
+    next: "prepare"
+
+  - id: "prepare"
+    name: "Prepare Context"
+    type: "skill"
+    skill_id: "lead_scoring"
+    next: "execute"
+
+  - id: "execute"
+    name: "Execute Core Logic"
+    type: "skill"
+    skill_id: "outreach_drafting"
+    next: "notify"
+
+  - id: "notify"
+    name: "Send Notification"
+    type: "connector"
+    connector_id: "linkedin_api"
+    next: "end"
+
+  - id: "end"
+    name: "End"
+    type: "end"
+
+quality:
+  test_coverage: 0.75
+  risk_level: "low"
+  max_execution_minutes: 10

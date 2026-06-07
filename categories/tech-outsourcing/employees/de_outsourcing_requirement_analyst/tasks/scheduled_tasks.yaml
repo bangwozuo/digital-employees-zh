@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_outsourcing_requirement_analyst
+
+tasks:
+  - id: weekly_project_health_report
+    name: "Weekly Project Health Report"
+    description: |
+      定时任务：weekly project health report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - requirement_clarification
+    required_connectors:
+      - github_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: milestone_deadline_reminder
+    name: "Milestone Deadline Reminder"
+    description: |
+      定时任务：milestone deadline reminder。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - quote_estimation
+    required_connectors:
+      - gitlab_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

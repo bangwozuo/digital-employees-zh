@@ -1,0 +1,64 @@
+name: Platform Import Draft
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  platform-import-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate platform import draft
+        run: |
+          python -c "
+import os, json, glob
+from datetime import datetime
+
+def scan_assets(root, ext):
+    assets = []
+    pattern = os.path.join(root, '**/*.' + ext)
+    for p in glob.glob(pattern, recursive=True):
+        if '.git' in p:
+            continue
+        rel = os.path.relpath(p, '.')
+        assets.append({'path': rel, 'size': os.path.getsize(p)})
+    return assets
+
+draft = {
+    'api_version': 'employee.hicloud/v2.1',
+    'kind': 'PlatformImportDraft',
+    'metadata': {
+        'repo': 'digital-employees-zh',
+        'generated_at': datetime.now().isoformat(),
+    },
+    'spec': {
+        'yaml_assets': scan_assets('.', 'yaml'),
+        'yml_assets': scan_assets('.', 'yml'),
+        'json_assets': scan_assets('.', 'json'),
+        'md_assets': scan_assets('.', 'md'),
+    }
+}
+
+os.makedirs('platform-import-bundle', exist_ok=True)
+with open('platform-import-bundle/import-draft.json', 'w', encoding='utf-8') as f:
+    json.dump(draft, f, ensure_ascii=False, indent=2)
+
+print('Generated import draft for digital-employees-zh')
+print('  YAML:', len(draft['spec']['yaml_assets']))
+print('  YML: ', len(draft['spec']['yml_assets']))
+print('  JSON:', len(draft['spec']['json_assets']))
+print('  MD:  ', len(draft['spec']['md_assets']))
+"
+      - name: Upload draft artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: platform-import-draft-digital-employees-zh
+          path: platform-import-bundle/import-draft.json
+          retention-days: 30

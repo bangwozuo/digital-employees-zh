@@ -1,0 +1,57 @@
+id: de_one_person_company_assistant
+name: "一人公司全能助手"
+description: |
+  专为一人公司设计的全能型数字员工，整合内容创作、客户管理、项目交付和基础财务能力。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "one-person-company"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: content_drafting
+    name: "Content Drafting"
+    required: true
+  - id: client_follow_up
+    name: "Client Follow Up"
+    required: false
+
+business_connectors:
+  - id: wechat_official
+    name: "Wechat Official"
+    required: true
+  - id: notion_api
+    name: "Notion Api"
+    required: false
+
+scenario_workflows:
+  - id: daily_content_pipeline
+    name: "Daily Content Pipeline"
+    trigger_type: "manual"
+  - id: client_onboarding_flow
+    name: "Client Onboarding Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: check_unread_client_messages
+    name: "Check Unread Client Messages"
+    estimated_duration_minutes: 15
+  - id: draft_social_posts
+    name: "Draft Social Posts"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_finance_report
+    name: "Weekly Finance Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_client_retention_analysis
+    name: "Monthly Client Retention Analysis"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

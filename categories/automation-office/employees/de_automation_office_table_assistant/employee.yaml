@@ -1,0 +1,57 @@
+id: de_automation_office_table_assistant
+name: "自动化办公表格助手"
+description: |
+  专注办公自动化场景的数字化助手，支持Excel/表格智能处理、邮件批量操作、文档格式转换和流程审批辅助。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "automation-office"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: spreadsheet_processing
+    name: "Spreadsheet Processing"
+    required: true
+  - id: email_batch_operation
+    name: "Email Batch Operation"
+    required: false
+
+business_connectors:
+  - id: excel_online_api
+    name: "Excel Online Api"
+    required: true
+  - id: google_sheets_api
+    name: "Google Sheets Api"
+    required: false
+
+scenario_workflows:
+  - id: data_cleanup_flow
+    name: "Data Cleanup Flow"
+    trigger_type: "manual"
+  - id: mail_merge_flow
+    name: "Mail Merge Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: process_pending_spreadsheets
+    name: "Process Pending Spreadsheets"
+    estimated_duration_minutes: 15
+  - id: send_scheduled_emails
+    name: "Send Scheduled Emails"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_data_quality_report
+    name: "Weekly Data Quality Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_automation_coverage_report
+    name: "Monthly Automation Coverage Report"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

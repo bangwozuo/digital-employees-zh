@@ -1,0 +1,46 @@
+name: Validate Manifest
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  validate-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema requests
+      - name: Validate YAML/JSON manifests
+        run: |
+          python -c "
+import os, sys, yaml, json, glob
+errors = []
+for pattern in ['categories/**/*.yaml', 'categories/**/*.yml', 'categories/**/*.json']:
+    for path in glob.glob(pattern, recursive=True):
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                if path.endswith('.json'):
+                    json.load(f)
+                else:
+                    yaml.safe_load(f)
+            print(f'OK: {path}')
+        except Exception as e:
+            errors.append(f'{path}: {e}')
+            print(f'ERROR: {path}: {e}')
+if errors:
+    print(f'\n{len(errors)} manifest(s) failed validation')
+    sys.exit(1)
+else:
+    print('\nAll manifests valid')
+"
+
+      - name: Report failure
+        if: failure()
+        run: echo '::error::Manifest validation failed. Check logs above for details.'

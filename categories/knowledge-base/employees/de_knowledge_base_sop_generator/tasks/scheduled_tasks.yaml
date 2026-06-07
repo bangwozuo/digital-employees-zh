@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_knowledge_base_sop_generator
+
+tasks:
+  - id: weekly_knowledge_usage_report
+    name: "Weekly Knowledge Usage Report"
+    description: |
+      定时任务：weekly knowledge usage report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - sop_generation
+    required_connectors:
+      - confluence_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_sop_audit
+    name: "Monthly Sop Audit"
+    description: |
+      定时任务：monthly sop audit。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - document_classification
+    required_connectors:
+      - notion_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_platform_ops_skill_auditor
+
+tasks:
+  - id: review_pending_skill_submissions
+    name: "Review Pending Skill Submissions"
+    description: |
+      每日例行任务：review pending skill submissions。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - skill_package_audit
+    required_connectors:
+      - platform_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: scan_compliance_violations
+    name: "Scan Compliance Violations"
+    description: |
+      每日例行任务：scan compliance violations。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - content_compliance_check
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

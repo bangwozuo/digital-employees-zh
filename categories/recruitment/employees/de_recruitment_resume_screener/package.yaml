@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_recruitment_resume_screener
+name: "招聘简历筛选助手"
+description: |
+  自动化简历筛选与面试协同数字员工，支持JD匹配评分、面试安排、人才画像生成和offer模板管理。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_recruitment_resume_screener
+    name: "招聘简历筛选助手"
+    description: |
+      自动化简历筛选与面试协同数字员工，支持JD匹配评分、面试安排、人才画像生成和offer模板管理。
+    business_skills:
+      - resume_parsing
+      - jd_matching
+    business_connectors:
+      - boss_zhipin_api
+      - mokahr_api
+    scenario_workflows:
+      - resume_to_interview_flow
+      - offer_generation_flow
+    daily_tasks:
+      - screen_new_applications
+      - schedule_interviews
+    scheduled_tasks:
+      - weekly_hiring_funnel_report
+      - monthly_talent_pool_analysis
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

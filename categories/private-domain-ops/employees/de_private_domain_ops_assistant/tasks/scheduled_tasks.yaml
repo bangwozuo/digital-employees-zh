@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_private_domain_ops_assistant
+
+tasks:
+  - id: weekly_lifecycle_stage_report
+    name: "Weekly Lifecycle Stage Report"
+    description: |
+      定时任务：weekly lifecycle stage report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - community_sop_execution
+    required_connectors:
+      - wechat_work_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_ltv_analysis
+    name: "Monthly Ltv Analysis"
+    description: |
+      定时任务：monthly ltv analysis。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - user_segmentation
+    required_connectors:
+      - enterprise_wechat
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

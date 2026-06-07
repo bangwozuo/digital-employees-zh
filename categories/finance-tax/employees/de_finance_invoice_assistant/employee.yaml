@@ -1,0 +1,57 @@
+id: de_finance_invoice_assistant
+name: "财税发票助手"
+description: |
+  面向中小企业的财税管理数字员工，支持发票识别与验真、费用报销审核、税务日历管理和现金流预警。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "finance-tax"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: invoice_verification
+    name: "Invoice Verification"
+    required: true
+  - id: expense_audit
+    name: "Expense Audit"
+    required: false
+
+business_connectors:
+  - id: tax_platform_api
+    name: "Tax Platform Api"
+    required: true
+  - id: bank_api
+    name: "Bank Api"
+    required: false
+
+scenario_workflows:
+  - id: invoice_inbound_flow
+    name: "Invoice Inbound Flow"
+    trigger_type: "manual"
+  - id: expense_approval_flow
+    name: "Expense Approval Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: scan_new_invoices
+    name: "Scan New Invoices"
+    estimated_duration_minutes: 15
+  - id: verify_pending_expenses
+    name: "Verify Pending Expenses"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_cashflow_forecast
+    name: "Weekly Cashflow Forecast"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_tax_compliance_check
+    name: "Monthly Tax Compliance Check"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

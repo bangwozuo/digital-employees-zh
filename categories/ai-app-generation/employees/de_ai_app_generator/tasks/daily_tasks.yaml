@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_ai_app_generator
+
+tasks:
+  - id: run_prompt_regression_tests
+    name: "Run Prompt Regression Tests"
+    description: |
+      每日例行任务：run prompt regression tests。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - prompt_optimization
+    required_connectors:
+      - openai_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: collect_user_feedback_samples
+    name: "Collect User Feedback Samples"
+    description: |
+      每日例行任务：collect user feedback samples。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - model_selection_advisor
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

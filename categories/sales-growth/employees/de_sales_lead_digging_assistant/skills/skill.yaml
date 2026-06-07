@@ -1,0 +1,40 @@
+id: lead_scoring
+name: "Lead Scoring"
+description: |
+  核心业务技能：lead scoring。
+  属于 销售线索挖掘助手 的必备技能之一。
+version: "1.0.0"
+author: "digital-employee-community"
+type: "business_skill"
+language: "zh-cn"
+
+inputs:
+  - name: "input_data"
+    type: "string"
+    required: true
+    description: "输入数据或上下文"
+  - name: "options"
+    type: "object"
+    required: false
+    description: "可选配置参数"
+
+outputs:
+  - name: "result"
+    type: "string"
+    description: "处理结果"
+  - name: "metadata"
+    type: "object"
+    description: "执行元数据"
+
+execution:
+  mode: "python"
+  entry: "run.py"
+  runtime: "python3.11"
+  timeout_seconds: 60
+  memory_mb: 256
+
+quality:
+  test_coverage: 0.85
+  risk_level: "low"
+  sample_inputs_provided: true
+  sample_outputs_provided: true

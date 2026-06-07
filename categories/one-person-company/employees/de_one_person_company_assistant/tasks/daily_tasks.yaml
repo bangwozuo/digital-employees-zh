@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_one_person_company_assistant
+
+tasks:
+  - id: check_unread_client_messages
+    name: "Check Unread Client Messages"
+    description: |
+      每日例行任务：check unread client messages。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - content_drafting
+    required_connectors:
+      - wechat_official
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: draft_social_posts
+    name: "Draft Social Posts"
+    description: |
+      每日例行任务：draft social posts。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - client_follow_up
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

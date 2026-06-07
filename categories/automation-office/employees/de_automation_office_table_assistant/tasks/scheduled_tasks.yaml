@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_automation_office_table_assistant
+
+tasks:
+  - id: weekly_data_quality_report
+    name: "Weekly Data Quality Report"
+    description: |
+      定时任务：weekly data quality report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - spreadsheet_processing
+    required_connectors:
+      - excel_online_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_automation_coverage_report
+    name: "Monthly Automation Coverage Report"
+    description: |
+      定时任务：monthly automation coverage report。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - email_batch_operation
+    required_connectors:
+      - google_sheets_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

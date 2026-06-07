@@ -1,0 +1,57 @@
+id: de_admin_meeting_minutes_assistant
+name: "行政会议纪要助手"
+description: |
+  专注会议纪要与行政事务的数字化助手，支持实时转写、待办提取、考勤统计和制度问答。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "admin-hr"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: meeting_minutes_generation
+    name: "Meeting Minutes Generation"
+    required: true
+  - id: action_item_tracking
+    name: "Action Item Tracking"
+    required: false
+
+business_connectors:
+  - id: feishu_api
+    name: "Feishu Api"
+    required: true
+  - id: dingtalk_api
+    name: "Dingtalk Api"
+    required: false
+
+scenario_workflows:
+  - id: meeting_to_minutes_flow
+    name: "Meeting To Minutes Flow"
+    trigger_type: "manual"
+  - id: onboarding_checklist_flow
+    name: "Onboarding Checklist Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: transcribe_meeting_recordings
+    name: "Transcribe Meeting Recordings"
+    estimated_duration_minutes: 15
+  - id: follow_up_action_items
+    name: "Follow Up Action Items"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_attendance_report
+    name: "Weekly Attendance Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_meeting_analytics
+    name: "Monthly Meeting Analytics"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

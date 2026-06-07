@@ -1,0 +1,50 @@
+id: prompt_iterative_refinement
+name: "Prompt Iterative Refinement"
+description: |
+  场景工作流：prompt iterative refinement。
+  自动化执行 AI应用生成器 的核心业务流程。
+version: "1.0.0"
+author: "digital-employee-community"
+type: "scenario_workflow"
+
+triggers:
+  - type: "manual"
+    config:
+      description: "用户手动触发"
+  - type: "scheduled"
+    config:
+      cron_expression: "0 9 * * *"
+      timezone: "Asia/Shanghai"
+
+steps:
+  - id: "start"
+    name: "Start"
+    type: "start"
+    next: "prepare"
+
+  - id: "prepare"
+    name: "Prepare Context"
+    type: "skill"
+    skill_id: "prompt_optimization"
+    next: "execute"
+
+  - id: "execute"
+    name: "Execute Core Logic"
+    type: "skill"
+    skill_id: "model_selection_advisor"
+    next: "notify"
+
+  - id: "notify"
+    name: "Send Notification"
+    type: "connector"
+    connector_id: "openai_api"
+    next: "end"
+
+  - id: "end"
+    name: "End"
+    type: "end"
+
+quality:
+  test_coverage: 0.75
+  risk_level: "low"
+  max_execution_minutes: 10

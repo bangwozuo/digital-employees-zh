@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_startup_decision_analyst
+name: "创业决策分析师"
+description: |
+  基于市场数据和行业情报，为创业者提供竞品分析、融资BP优化、商业模式验证等决策支持。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_startup_decision_analyst
+    name: "创业决策分析师"
+    description: |
+      基于市场数据和行业情报，为创业者提供竞品分析、融资BP优化、商业模式验证等决策支持。
+    business_skills:
+      - competitor_intelligence
+      - pitch_deck_review
+    business_connectors:
+      - crunchbase_api
+      - tianyancha_api
+    scenario_workflows:
+      - weekly_competitor_digest
+      - funding_readiness_check
+    daily_tasks:
+      - scan_competitor_news
+      - update_funding_landscape
+    scheduled_tasks:
+      - weekly_investor_update
+      - monthly_strategy_review
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

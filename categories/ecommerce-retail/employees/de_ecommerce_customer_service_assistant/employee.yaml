@@ -1,0 +1,57 @@
+id: de_ecommerce_customer_service_assistant
+name: "电商客服助手"
+description: |
+  7×24小时电商客服数字员工，支持售前咨询、订单查询、售后处理、评价回复和客诉升级。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "ecommerce-retail"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: pre_sales_qa
+    name: "Pre Sales Qa"
+    required: true
+  - id: order_tracking
+    name: "Order Tracking"
+    required: false
+
+business_connectors:
+  - id: taobao_api
+    name: "Taobao Api"
+    required: true
+  - id: jd_api
+    name: "Jd Api"
+    required: false
+
+scenario_workflows:
+  - id: auto_reply_workflow
+    name: "Auto Reply Workflow"
+    trigger_type: "manual"
+  - id: refund_approval_flow
+    name: "Refund Approval Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: reply_to_pending_inquiries
+    name: "Reply To Pending Inquiries"
+    estimated_duration_minutes: 15
+  - id: process_refund_requests
+    name: "Process Refund Requests"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: daily_review_reply_batch
+    name: "Daily Review Reply Batch"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: weekly_csat_report
+    name: "Weekly Csat Report"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

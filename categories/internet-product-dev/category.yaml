@@ -1,0 +1,11 @@
+id: internet-product-dev
+name: "互联网产品研发"
+name_en: "Internet Product Development"
+description: |
+  为产品经理和研发团队提供PRD撰写、需求评审、用户故事生成、技术方案对比等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - internet-product-dev
+  - zh-cn
+  - sme

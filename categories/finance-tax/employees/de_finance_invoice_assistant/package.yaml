@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_finance_invoice_assistant
+name: "财税发票助手"
+description: |
+  面向中小企业的财税管理数字员工，支持发票识别与验真、费用报销审核、税务日历管理和现金流预警。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_finance_invoice_assistant
+    name: "财税发票助手"
+    description: |
+      面向中小企业的财税管理数字员工，支持发票识别与验真、费用报销审核、税务日历管理和现金流预警。
+    business_skills:
+      - invoice_verification
+      - expense_audit
+    business_connectors:
+      - tax_platform_api
+      - bank_api
+    scenario_workflows:
+      - invoice_inbound_flow
+      - expense_approval_flow
+    daily_tasks:
+      - scan_new_invoices
+      - verify_pending_expenses
+    scheduled_tasks:
+      - weekly_cashflow_forecast
+      - monthly_tax_compliance_check
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

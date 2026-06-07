@@ -1,0 +1,57 @@
+id: de_platform_ops_skill_auditor
+name: "平台运营技能审核助手"
+description: |
+  面向数字员工平台运营团队的审核与监控助手，支持技能资产包审核、内容合规检查、用户反馈聚合和平台数据监控。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "platform-ops"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: skill_package_audit
+    name: "Skill Package Audit"
+    required: true
+  - id: content_compliance_check
+    name: "Content Compliance Check"
+    required: false
+
+business_connectors:
+  - id: platform_api
+    name: "Platform Api"
+    required: true
+  - id: moderation_api
+    name: "Moderation Api"
+    required: false
+
+scenario_workflows:
+  - id: skill_submission_review_flow
+    name: "Skill Submission Review Flow"
+    trigger_type: "manual"
+  - id: compliance_alert_flow
+    name: "Compliance Alert Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: review_pending_skill_submissions
+    name: "Review Pending Skill Submissions"
+    estimated_duration_minutes: 15
+  - id: scan_compliance_violations
+    name: "Scan Compliance Violations"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: daily_platform_health_report
+    name: "Daily Platform Health Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: weekly_skill_quality_report
+    name: "Weekly Skill Quality Report"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

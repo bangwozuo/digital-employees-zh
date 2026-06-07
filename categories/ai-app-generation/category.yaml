@@ -1,0 +1,11 @@
+id: ai-app-generation
+name: "AI应用生成"
+name_en: "AI App Generation"
+description: |
+  为AI应用开发者提供Prompt工程、模型选型、应用原型生成、效果评估等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - ai-app-generation
+  - zh-cn
+  - sme

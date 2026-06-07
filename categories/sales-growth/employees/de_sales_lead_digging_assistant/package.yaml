@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_sales_lead_digging_assistant
+name: "销售线索挖掘助手"
+description: |
+  自动化销售线索挖掘与培育数字员工，支持多渠道线索采集、智能评分、跟进提醒和报价生成。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_sales_lead_digging_assistant
+    name: "销售线索挖掘助手"
+    description: |
+      自动化销售线索挖掘与培育数字员工，支持多渠道线索采集、智能评分、跟进提醒和报价生成。
+    business_skills:
+      - lead_scoring
+      - outreach_drafting
+    business_connectors:
+      - linkedin_api
+      - salesforce_api
+    scenario_workflows:
+      - lead_to_mql_flow
+      - proposal_approval_flow
+    daily_tasks:
+      - score_new_leads
+      - draft_personalized_outreach
+    scheduled_tasks:
+      - weekly_pipeline_review
+      - monthly_forecast_update
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

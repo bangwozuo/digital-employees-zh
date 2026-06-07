@@ -1,0 +1,57 @@
+id: de_sales_lead_digging_assistant
+name: "销售线索挖掘助手"
+description: |
+  自动化销售线索挖掘与培育数字员工，支持多渠道线索采集、智能评分、跟进提醒和报价生成。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "sales-growth"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: lead_scoring
+    name: "Lead Scoring"
+    required: true
+  - id: outreach_drafting
+    name: "Outreach Drafting"
+    required: false
+
+business_connectors:
+  - id: linkedin_api
+    name: "Linkedin Api"
+    required: true
+  - id: salesforce_api
+    name: "Salesforce Api"
+    required: false
+
+scenario_workflows:
+  - id: lead_to_mql_flow
+    name: "Lead To Mql Flow"
+    trigger_type: "manual"
+  - id: proposal_approval_flow
+    name: "Proposal Approval Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: score_new_leads
+    name: "Score New Leads"
+    estimated_duration_minutes: 15
+  - id: draft_personalized_outreach
+    name: "Draft Personalized Outreach"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_pipeline_review
+    name: "Weekly Pipeline Review"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_forecast_update
+    name: "Monthly Forecast Update"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

@@ -1,0 +1,57 @@
+id: de_knowledge_base_sop_generator
+name: "知识库SOP生成器"
+description: |
+  面向企业知识库管理的数字化助手，支持SOP自动生成、文档智能分类、知识检索优化和版本变更追踪。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "knowledge-base"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: sop_generation
+    name: "Sop Generation"
+    required: true
+  - id: document_classification
+    name: "Document Classification"
+    required: false
+
+business_connectors:
+  - id: confluence_api
+    name: "Confluence Api"
+    required: true
+  - id: notion_api
+    name: "Notion Api"
+    required: false
+
+scenario_workflows:
+  - id: doc_to_sop_flow
+    name: "Doc To Sop Flow"
+    trigger_type: "manual"
+  - id: knowledge_gap_alert_flow
+    name: "Knowledge Gap Alert Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: classify_new_documents
+    name: "Classify New Documents"
+    estimated_duration_minutes: 15
+  - id: update_search_index
+    name: "Update Search Index"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_knowledge_usage_report
+    name: "Weekly Knowledge Usage Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_sop_audit
+    name: "Monthly Sop Audit"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

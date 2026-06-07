@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_ecommerce_customer_service_assistant
+
+tasks:
+  - id: daily_review_reply_batch
+    name: "Daily Review Reply Batch"
+    description: |
+      定时任务：daily review reply batch。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - pre_sales_qa
+    required_connectors:
+      - taobao_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: weekly_csat_report
+    name: "Weekly Csat Report"
+    description: |
+      定时任务：weekly csat report。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - order_tracking
+    required_connectors:
+      - jd_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

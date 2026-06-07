@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_recruitment_resume_screener
+
+tasks:
+  - id: weekly_hiring_funnel_report
+    name: "Weekly Hiring Funnel Report"
+    description: |
+      定时任务：weekly hiring funnel report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - resume_parsing
+    required_connectors:
+      - boss_zhipin_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_talent_pool_analysis
+    name: "Monthly Talent Pool Analysis"
+    description: |
+      定时任务：monthly talent pool analysis。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - jd_matching
+    required_connectors:
+      - mokahr_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

@@ -1,0 +1,11 @@
+id: data-analysis
+name: "数据分析"
+name_en: "Data Analysis"
+description: |
+  为数据分析师和业务人员提供日报生成、异常检测、可视化建议、SQL辅助等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - data-analysis
+  - zh-cn
+  - sme

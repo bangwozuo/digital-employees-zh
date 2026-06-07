@@ -1,0 +1,57 @@
+id: de_outsourcing_requirement_analyst
+name: "外包需求分析师"
+description: |
+  帮助外包需求方清晰表达需求、评估报价合理性，同时辅助服务商快速理解需求并生成技术方案。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "tech-outsourcing"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: requirement_clarification
+    name: "Requirement Clarification"
+    required: true
+  - id: quote_estimation
+    name: "Quote Estimation"
+    required: false
+
+business_connectors:
+  - id: github_api
+    name: "Github Api"
+    required: true
+  - id: gitlab_api
+    name: "Gitlab Api"
+    required: false
+
+scenario_workflows:
+  - id: requirement_to_sow_flow
+    name: "Requirement To Sow Flow"
+    trigger_type: "manual"
+  - id: milestone_acceptance_flow
+    name: "Milestone Acceptance Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: check_deliverable_submissions
+    name: "Check Deliverable Submissions"
+    estimated_duration_minutes: 15
+  - id: update_project_risk_log
+    name: "Update Project Risk Log"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_project_health_report
+    name: "Weekly Project Health Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: milestone_deadline_reminder
+    name: "Milestone Deadline Reminder"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_local_life_appointment_assistant
+name: "本地生活预约助手"
+description: |
+  面向美容、健身、教育、医疗等本地生活场景的预约管理数字员工，支持智能排班、到店提醒和满意度回访。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_local_life_appointment_assistant
+    name: "本地生活预约助手"
+    description: |
+      面向美容、健身、教育、医疗等本地生活场景的预约管理数字员工，支持智能排班、到店提醒和满意度回访。
+    business_skills:
+      - appointment_scheduling
+      - no_show_prevention
+    business_connectors:
+      - meituan_api
+      - dianping_api
+    scenario_workflows:
+      - appointment_confirmation_flow
+      - no_show_recovery_flow
+    daily_tasks:
+      - confirm_next_day_appointments
+      - send_reminder_messages
+    scheduled_tasks:
+      - daily_occupancy_report
+      - weekly_no_show_analysis
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

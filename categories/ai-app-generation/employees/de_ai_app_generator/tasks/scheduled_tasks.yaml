@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_ai_app_generator
+
+tasks:
+  - id: weekly_model_performance_report
+    name: "Weekly Model Performance Report"
+    description: |
+      定时任务：weekly model performance report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - prompt_optimization
+    required_connectors:
+      - openai_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_cost_analysis
+    name: "Monthly Cost Analysis"
+    description: |
+      定时任务：monthly cost analysis。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - model_selection_advisor
+    required_connectors:
+      - anthropic_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

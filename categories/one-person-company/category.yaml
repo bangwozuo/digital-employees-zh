@@ -1,0 +1,11 @@
+id: one-person-company
+name: "一人公司"
+name_en: "One-Person Company"
+description: |
+  为独立创业者、自由职业者、超级个体提供全栈数字员工资产包，覆盖内容生产、客户获取、交付管理、财务记账等核心环节。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - one-person-company
+  - zh-cn
+  - sme

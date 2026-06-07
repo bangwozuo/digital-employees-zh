@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_product_prd_assistant
+
+tasks:
+  - id: sprint_retrospective_summary
+    name: "Sprint Retrospective Summary"
+    description: |
+      定时任务：sprint retrospective summary。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - prd_generation
+    required_connectors:
+      - jira_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: weekly_product_metrics_digest
+    name: "Weekly Product Metrics Digest"
+    description: |
+      定时任务：weekly product metrics digest。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - user_story_splitting
+    required_connectors:
+      - confluence_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

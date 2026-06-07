@@ -1,0 +1,11 @@
+id: startup-decision
+name: "创业决策"
+name_en: "Startup Decision"
+description: |
+  为早期创业团队提供数据驱动的决策支持数字员工，覆盖竞品分析、融资材料准备、商业模式验证等场景。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - startup-decision
+  - zh-cn
+  - sme

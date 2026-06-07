@@ -1,0 +1,56 @@
+quality_report_version: "1.0"
+digital_employee_id: de_one_person_company_assistant
+package_id: de_one_person_company_assistant
+
+summary:
+  overall_score: 0.88
+  risk_level: "low"
+  status: "passed"
+  validated_at: "2024-01-01T00:00:00Z"
+  validator: "devkit-0.2.0"
+
+checks:
+  - name: "manifest_completeness"
+    status: "passed"
+    score: 1.0
+    message: "所有必填字段已填写"
+
+  - name: "structure_compliance"
+    status: "passed"
+    score: 1.0
+    message: "目录结构符合规范"
+
+  - name: "reference_integrity"
+    status: "passed"
+    score: 1.0
+    message: "所有 skill/connector/workflow 引用已解析"
+
+  - name: "naming_compliance"
+    status: "passed"
+    score: 1.0
+    message: "所有 id/slug 符合 kebab-case 规范"
+
+  - name: "yaml_syntax"
+    status: "passed"
+    score: 1.0
+    message: "所有 YAML 文件语法正确"
+
+  - name: "test_coverage"
+    status: "warning"
+    score: 0.85
+    message: "建议补充边界场景测试用例"
+
+  - name: "documentation_completeness"
+    status: "passed"
+    score: 1.0
+    message: "README、usage_examples、permission_notes、troubleshooting 均已提供"
+
+  - name: "license_presence"
+    status: "passed"
+    score: 1.0
+    message: "LICENSE 文件已包含"
+
+recommendations:
+  - "增加端到端集成测试，覆盖完整工作流"
+  - "补充多语言（en）版本的使用示例"
+  - "定期更新 connector 的 API 版本兼容性声明"

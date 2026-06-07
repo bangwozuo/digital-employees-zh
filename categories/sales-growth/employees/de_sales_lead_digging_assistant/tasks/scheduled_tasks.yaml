@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_sales_lead_digging_assistant
+
+tasks:
+  - id: weekly_pipeline_review
+    name: "Weekly Pipeline Review"
+    description: |
+      定时任务：weekly pipeline review。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - lead_scoring
+    required_connectors:
+      - linkedin_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_forecast_update
+    name: "Monthly Forecast Update"
+    description: |
+      定时任务：monthly forecast update。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - outreach_drafting
+    required_connectors:
+      - salesforce_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

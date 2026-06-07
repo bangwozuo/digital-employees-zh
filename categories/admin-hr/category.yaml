@@ -1,0 +1,11 @@
+id: admin-hr
+name: "行政人事"
+name_en: "Admin and HR"
+description: |
+  为行政人事部门提供会议纪要、考勤统计、入职办理、制度查询等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - admin-hr
+  - zh-cn
+  - sme

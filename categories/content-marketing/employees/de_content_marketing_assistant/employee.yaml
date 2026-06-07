@@ -1,0 +1,57 @@
+id: de_content_marketing_assistant
+name: "内容营销助手"
+description: |
+  覆盖内容选题、创作、多平台分发、SEO优化和效果复盘的全链路内容营销数字员工。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "content-marketing"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: topic_mining
+    name: "Topic Mining"
+    required: true
+  - id: multi_platform_adaptation
+    name: "Multi Platform Adaptation"
+    required: false
+
+business_connectors:
+  - id: wechat_official
+    name: "Wechat Official"
+    required: true
+  - id: xiaohongshu_api
+    name: "Xiaohongshu Api"
+    required: false
+
+scenario_workflows:
+  - id: content_calendar_pipeline
+    name: "Content Calendar Pipeline"
+    trigger_type: "manual"
+  - id: viral_topic_alert_flow
+    name: "Viral Topic Alert Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: scan_trending_topics
+    name: "Scan Trending Topics"
+    estimated_duration_minutes: 15
+  - id: draft_daily_posts
+    name: "Draft Daily Posts"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_content_performance_report
+    name: "Weekly Content Performance Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_competitor_content_audit
+    name: "Monthly Competitor Content Audit"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

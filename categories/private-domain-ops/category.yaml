@@ -1,0 +1,11 @@
+id: private-domain-ops
+name: "私域运营"
+name_en: "Private Domain Operations"
+description: |
+  为私域运营团队提供社群管理、用户分层、SOP执行、转化漏斗优化等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - private-domain-ops
+  - zh-cn
+  - sme

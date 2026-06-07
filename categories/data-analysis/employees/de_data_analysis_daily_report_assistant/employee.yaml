@@ -1,0 +1,57 @@
+id: de_data_analysis_daily_report_assistant
+name: "数据分析日报助手"
+description: |
+  自动化数据日报与异常监控数字员工，支持多数据源接入、指标计算、异常检测和可视化报告生成。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "data-analysis"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: daily_report_generation
+    name: "Daily Report Generation"
+    required: true
+  - id: anomaly_detection
+    name: "Anomaly Detection"
+    required: false
+
+business_connectors:
+  - id: mysql_connector
+    name: "Mysql Connector"
+    required: true
+  - id: bigquery_api
+    name: "Bigquery Api"
+    required: false
+
+scenario_workflows:
+  - id: etl_to_report_flow
+    name: "Etl To Report Flow"
+    trigger_type: "manual"
+  - id: alert_investigation_flow
+    name: "Alert Investigation Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: generate_morning_report
+    name: "Generate Morning Report"
+    estimated_duration_minutes: 15
+  - id: check_anomaly_alerts
+    name: "Check Anomaly Alerts"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_trend_report
+    name: "Weekly Trend Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_kpi_board_update
+    name: "Monthly Kpi Board Update"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

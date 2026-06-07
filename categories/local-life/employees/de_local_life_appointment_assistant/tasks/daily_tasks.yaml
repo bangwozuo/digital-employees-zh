@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_local_life_appointment_assistant
+
+tasks:
+  - id: confirm_next_day_appointments
+    name: "Confirm Next Day Appointments"
+    description: |
+      每日例行任务：confirm next day appointments。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - appointment_scheduling
+    required_connectors:
+      - meituan_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: send_reminder_messages
+    name: "Send Reminder Messages"
+    description: |
+      每日例行任务：send reminder messages。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - no_show_prevention
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

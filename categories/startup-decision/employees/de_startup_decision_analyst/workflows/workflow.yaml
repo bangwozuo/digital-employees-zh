@@ -1,0 +1,50 @@
+id: weekly_competitor_digest
+name: "Weekly Competitor Digest"
+description: |
+  场景工作流：weekly competitor digest。
+  自动化执行 创业决策分析师 的核心业务流程。
+version: "1.0.0"
+author: "digital-employee-community"
+type: "scenario_workflow"
+
+triggers:
+  - type: "manual"
+    config:
+      description: "用户手动触发"
+  - type: "scheduled"
+    config:
+      cron_expression: "0 9 * * *"
+      timezone: "Asia/Shanghai"
+
+steps:
+  - id: "start"
+    name: "Start"
+    type: "start"
+    next: "prepare"
+
+  - id: "prepare"
+    name: "Prepare Context"
+    type: "skill"
+    skill_id: "competitor_intelligence"
+    next: "execute"
+
+  - id: "execute"
+    name: "Execute Core Logic"
+    type: "skill"
+    skill_id: "pitch_deck_review"
+    next: "notify"
+
+  - id: "notify"
+    name: "Send Notification"
+    type: "connector"
+    connector_id: "crunchbase_api"
+    next: "end"
+
+  - id: "end"
+    name: "End"
+    type: "end"
+
+quality:
+  test_coverage: 0.75
+  risk_level: "low"
+  max_execution_minutes: 10

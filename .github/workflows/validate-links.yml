@@ -1,0 +1,60 @@
+name: Validate Links
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  validate-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install requests markdown beautifulsoup4
+      - name: Check links in README and docs
+        run: |
+          python -c "
+import os, sys, re, requests
+from pathlib import Path
+errors = []
+link_pattern = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
+for md in Path('.').rglob('*.md'):
+    if '.git' in str(md):
+        continue
+    text = md.read_text(encoding='utf-8')
+    for label, url in link_pattern.findall(text):
+        if url.startswith('http://') or url.startswith('https://'):
+            try:
+                r = requests.head(url, timeout=10, allow_redirects=True)
+                if r.status_code >= 400:
+                    errors.append(f'{md}: {url} -> {r.status_code}')
+                    print(f'BROKEN: {md} -> {url} ({r.status_code})')
+                else:
+                    print(f'OK: {md} -> {url}')
+            except Exception as e:
+                errors.append(f'{md}: {url} -> {e}')
+                print(f'BROKEN: {md} -> {url} ({e})')
+        elif url.startswith('#'):
+            continue
+        else:
+            target = md.parent / url.split('#')[0]
+            if not target.exists():
+                errors.append(f'{md}: {url} -> file not found')
+                print(f'BROKEN: {md} -> {url} (file not found)')
+            else:
+                print(f'OK: {md} -> {url}')
+if errors:
+    print(f'\n{len(errors)} broken link(s) found')
+    sys.exit(1)
+else:
+    print('\nAll links valid')
+"
+      - name: Report failure
+        if: failure()
+        run: echo '::error::Link validation failed. Check logs above for broken links.'

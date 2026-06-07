@@ -1,0 +1,61 @@
+name: Validate License
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  validate-license:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate LICENSE, NOTICE, source_refs
+        run: |
+          python -c "
+import os, sys
+errors = []
+required_files = ['LICENSE', 'NOTICE', 'source_refs.json']
+for req in required_files:
+    if not os.path.exists(req):
+        errors.append(f'Missing required file: {req}')
+        print(f'MISSING: {req}')
+    else:
+        print(f'FOUND: {req}')
+if os.path.exists('source_refs.json'):
+    import json
+    try:
+        with open('source_refs.json', 'r', encoding='utf-8') as f:
+            refs = json.load(f)
+        if not isinstance(refs, list) or len(refs) == 0:
+            errors.append('source_refs.json must be a non-empty list')
+        else:
+            for i, ref in enumerate(refs):
+                if 'source' not in ref or 'license' not in ref:
+                    errors.append(f'source_refs.json[{i}] missing source or license field')
+        print('source_refs.json structure valid')
+    except Exception as e:
+        errors.append(f'source_refs.json parse error: {e}')
+if os.path.exists('LICENSE'):
+    with open('LICENSE', 'r', encoding='utf-8') as f:
+        content = f.read()
+    if len(content) < 50:
+        errors.append('LICENSE file too short')
+    if 'copyright' not in content.lower() and 'license' not in content.lower():
+        errors.append('LICENSE missing expected keywords')
+if errors:
+    print(f'\n{len(errors)} license issue(s) found')
+    for e in errors:
+        print(f'  - {e}')
+    sys.exit(1)
+else:
+    print('\nLicense validation passed')
+"
+      - name: Report failure
+        if: failure()
+        run: echo '::error::License validation failed. Check logs above for details.'

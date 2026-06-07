@@ -1,0 +1,11 @@
+id: ecommerce-retail
+name: "电商零售"
+name_en: "E-commerce Retail"
+description: |
+  为电商卖家提供客服应答、订单异常处理、评价管理、库存预警等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - ecommerce-retail
+  - zh-cn
+  - sme

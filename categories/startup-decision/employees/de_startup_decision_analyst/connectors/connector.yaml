@@ -1,0 +1,33 @@
+id: crunchbase_api
+name: "Crunchbase Api"
+description: |
+  业务连接器：crunchbase api。
+  为 创业决策分析师 提供外部系统对接能力。
+version: "1.0.0"
+author: "digital-employee-community"
+type: "business_connector"
+protocol: "rest"
+
+auth:
+  type: "api_key"
+  location: "header"
+  header_name: "X-API-Key"
+  description: "请在平台配置页填入您的 API Key"
+
+endpoints:
+  - name: "default"
+    method: "GET"
+    path: "/api/v1/example"
+    description: "示例接口，请根据实际文档替换"
+    parameters:
+      - name: "limit"
+        type: "integer"
+        required: false
+        default: 10
+    response_schema:
+      type: "object"
+
+quality:
+  test_coverage: 0.80
+  risk_level: "low"
+  documentation_url: "https://docs.example.com/api"

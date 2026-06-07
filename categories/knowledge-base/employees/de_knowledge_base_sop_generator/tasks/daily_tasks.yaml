@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_knowledge_base_sop_generator
+
+tasks:
+  - id: classify_new_documents
+    name: "Classify New Documents"
+    description: |
+      每日例行任务：classify new documents。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - sop_generation
+    required_connectors:
+      - confluence_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: update_search_index
+    name: "Update Search Index"
+    description: |
+      每日例行任务：update search index。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - document_classification
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

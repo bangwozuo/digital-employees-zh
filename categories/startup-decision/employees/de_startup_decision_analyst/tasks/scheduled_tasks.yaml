@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_startup_decision_analyst
+
+tasks:
+  - id: weekly_investor_update
+    name: "Weekly Investor Update"
+    description: |
+      定时任务：weekly investor update。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - competitor_intelligence
+    required_connectors:
+      - crunchbase_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_strategy_review
+    name: "Monthly Strategy Review"
+    description: |
+      定时任务：monthly strategy review。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - pitch_deck_review
+    required_connectors:
+      - tianyancha_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

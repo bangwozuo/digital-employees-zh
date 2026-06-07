@@ -1,0 +1,11 @@
+id: knowledge-base
+name: "知识库"
+name_en: "Knowledge Base"
+description: |
+  为知识管理团队提供SOP生成、文档分类、知识检索、版本控制等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - knowledge-base
+  - zh-cn
+  - sme

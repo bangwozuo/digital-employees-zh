@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_ecommerce_customer_service_assistant
+name: "电商客服助手"
+description: |
+  7×24小时电商客服数字员工，支持售前咨询、订单查询、售后处理、评价回复和客诉升级。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_ecommerce_customer_service_assistant
+    name: "电商客服助手"
+    description: |
+      7×24小时电商客服数字员工，支持售前咨询、订单查询、售后处理、评价回复和客诉升级。
+    business_skills:
+      - pre_sales_qa
+      - order_tracking
+    business_connectors:
+      - taobao_api
+      - jd_api
+    scenario_workflows:
+      - auto_reply_workflow
+      - refund_approval_flow
+    daily_tasks:
+      - reply_to_pending_inquiries
+      - process_refund_requests
+    scheduled_tasks:
+      - daily_review_reply_batch
+      - weekly_csat_report
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

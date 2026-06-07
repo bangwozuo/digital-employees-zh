@@ -1,0 +1,57 @@
+id: de_customer_service_faq_assistant
+name: "客服FAQ助手"
+description: |
+  基于知识库的自动化客服应答数字员工，支持多轮对话、工单自动分类、知识库自动更新和服务质量监控。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "customer-service"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: faq_auto_reply
+    name: "Faq Auto Reply"
+    required: true
+  - id: ticket_classification
+    name: "Ticket Classification"
+    required: false
+
+business_connectors:
+  - id: zendesk_api
+    name: "Zendesk Api"
+    required: true
+  - id: freshdesk_api
+    name: "Freshdesk Api"
+    required: false
+
+scenario_workflows:
+  - id: ticket_routing_flow
+    name: "Ticket Routing Flow"
+    trigger_type: "manual"
+  - id: escalation_handoff_flow
+    name: "Escalation Handoff Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: reply_to_faq_tickets
+    name: "Reply To Faq Tickets"
+    estimated_duration_minutes: 15
+  - id: classify_new_tickets
+    name: "Classify New Tickets"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: daily_ticket_volume_report
+    name: "Daily Ticket Volume Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: weekly_quality_score_report
+    name: "Weekly Quality Score Report"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

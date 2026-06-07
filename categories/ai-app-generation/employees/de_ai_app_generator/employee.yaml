@@ -1,0 +1,57 @@
+id: de_ai_app_generator
+name: "AI应用生成器"
+description: |
+  辅助开发者快速构建AI应用原型，包括Prompt设计、模型选型建议、效果评测和迭代优化。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "ai-app-generation"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: prompt_optimization
+    name: "Prompt Optimization"
+    required: true
+  - id: model_selection_advisor
+    name: "Model Selection Advisor"
+    required: false
+
+business_connectors:
+  - id: openai_api
+    name: "Openai Api"
+    required: true
+  - id: anthropic_api
+    name: "Anthropic Api"
+    required: false
+
+scenario_workflows:
+  - id: prompt_iterative_refinement
+    name: "Prompt Iterative Refinement"
+    trigger_type: "manual"
+  - id: model_ab_test_flow
+    name: "Model Ab Test Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: run_prompt_regression_tests
+    name: "Run Prompt Regression Tests"
+    estimated_duration_minutes: 15
+  - id: collect_user_feedback_samples
+    name: "Collect User Feedback Samples"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_model_performance_report
+    name: "Weekly Model Performance Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_cost_analysis
+    name: "Monthly Cost Analysis"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

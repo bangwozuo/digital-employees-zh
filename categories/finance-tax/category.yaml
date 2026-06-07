@@ -1,0 +1,11 @@
+id: finance-tax
+name: "财税管理"
+name_en: "Finance and Tax"
+description: |
+  为中小企业提供发票管理、费用报销、税务申报提醒、现金流预测等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - finance-tax
+  - zh-cn
+  - sme

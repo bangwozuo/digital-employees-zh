@@ -1,0 +1,11 @@
+id: content-marketing
+name: "内容营销"
+name_en: "Content Marketing"
+description: |
+  为内容团队提供选题策划、多平台分发、SEO优化、数据复盘等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - content-marketing
+  - zh-cn
+  - sme

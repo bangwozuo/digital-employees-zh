@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_legal_contract_review_assistant
+
+tasks:
+  - id: weekly_contract_volume_report
+    name: "Weekly Contract Volume Report"
+    description: |
+      定时任务：weekly contract volume report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - contract_risk_scan
+    required_connectors:
+      - e_signature_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_risk_trend_analysis
+    name: "Monthly Risk Trend Analysis"
+    description: |
+      定时任务：monthly risk trend analysis。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - compliance_check
+    required_connectors:
+      - company_registry_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

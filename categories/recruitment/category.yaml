@@ -1,0 +1,11 @@
+id: recruitment
+name: "招聘面试"
+name_en: "Recruitment"
+description: |
+  为招聘团队提供简历筛选、面试安排、人才画像、offer生成等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - recruitment
+  - zh-cn
+  - sme

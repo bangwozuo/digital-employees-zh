@@ -1,0 +1,92 @@
+name: Generate Index
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 0'
+
+jobs:
+  generate-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate directory index and stats
+        run: |
+          python -c "
+import os, json, subprocess
+from datetime import datetime
+index = {'generated_at': datetime.now().isoformat(), 'repo': 'digital-employees-zh', 'entries': []}
+for root, dirs, files in os.walk('.'):
+    if '.git' in root:
+        continue
+    rel = os.path.relpath(root, '.')
+    if rel == '.':
+        rel = ''
+    md_files = [f for f in files if f.endswith('.md')]
+    yaml_files = [f for f in files if f.endswith('.yaml') or f.endswith('.yml')]
+    json_files = [f for f in files if f.endswith('.json')]
+    if md_files or yaml_files or json_files:
+        index['entries'].append({
+            'path': rel,
+            'md_count': len(md_files),
+            'yaml_count': len(yaml_files),
+            'json_count': len(json_files),
+            'total_files': len(files)
+        })
+try:
+    result = subprocess.run(['git', 'log', '--format=%an'], capture_output=True, text=True)
+    contributors = list(set(result.stdout.strip().split('\n')))
+    index['contributors'] = contributors
+    index['contributor_count'] = len(contributors)
+except Exception as e:
+    index['contributors'] = []
+    index['contributor_count'] = 0
+with open('DIRECTORY_INDEX.json', 'w', encoding='utf-8') as f:
+    json.dump(index, f, ensure_ascii=False, indent=2)
+print('Generated index:', len(index['entries']), 'entries,', index.get('contributor_count', 0), 'contributors')
+"
+
+      - name: Update badges in README
+        run: |
+          python -c "
+from pathlib import Path
+readme = Path('README.md')
+if not readme.exists():
+    print('No README.md found')
+    exit(0)
+text = readme.read_text(encoding='utf-8')
+badge_line = f'![Index Updated](https://img.shields.io/badge/index-updated-green)'
+if badge_line not in text:
+    lines = text.split('\n')
+    if lines and lines[0].startswith('#'):
+        lines.insert(1, badge_line)
+        readme.write_text('\n'.join(lines), encoding='utf-8')
+        print('Added badge to README')
+    else:
+        print('README structure unexpected, skipping badge')
+else:
+    print('Badge already present')
+"
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add DIRECTORY_INDEX.json REPO_INDEX.json README.md 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo 'No changes to commit'
+          else
+            git commit -m 'chore: auto-update index and badges [skip ci]'
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true

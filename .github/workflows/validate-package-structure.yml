@@ -1,0 +1,42 @@
+name: Validate Package Structure
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  validate-package-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate directory structure
+        run: |
+          python -c "
+import os, sys
+errors = []
+        if not os.path.exists('README.md'): errors.append('Missing: README.md')
+        if not os.path.exists('LICENSE'): errors.append('Missing: LICENSE')
+        if not os.path.exists('categories/'): errors.append('Missing: categories/')
+        if not os.path.exists('.github/workflows/'): errors.append('Missing: .github/workflows/')
+for item in ['README.md', 'LICENSE', 'categories/', '.github/workflows/']:
+    if os.path.exists(item):
+        print(f'FOUND: {item}')
+    else:
+        print(f'MISSING: {item}')
+if errors:
+    print(f'\n{len(errors)} structural issue(s) found')
+    for e in errors:
+        print(f'  - {e}')
+    sys.exit(1)
+else:
+    print('\nPackage structure valid')
+"
+      - name: Report failure
+        if: failure()
+        run: echo '::error::Package structure validation failed. Check logs above for details.'

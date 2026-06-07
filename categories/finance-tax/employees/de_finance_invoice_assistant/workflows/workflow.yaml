@@ -1,0 +1,50 @@
+id: invoice_inbound_flow
+name: "Invoice Inbound Flow"
+description: |
+  场景工作流：invoice inbound flow。
+  自动化执行 财税发票助手 的核心业务流程。
+version: "1.0.0"
+author: "digital-employee-community"
+type: "scenario_workflow"
+
+triggers:
+  - type: "manual"
+    config:
+      description: "用户手动触发"
+  - type: "scheduled"
+    config:
+      cron_expression: "0 9 * * *"
+      timezone: "Asia/Shanghai"
+
+steps:
+  - id: "start"
+    name: "Start"
+    type: "start"
+    next: "prepare"
+
+  - id: "prepare"
+    name: "Prepare Context"
+    type: "skill"
+    skill_id: "invoice_verification"
+    next: "execute"
+
+  - id: "execute"
+    name: "Execute Core Logic"
+    type: "skill"
+    skill_id: "expense_audit"
+    next: "notify"
+
+  - id: "notify"
+    name: "Send Notification"
+    type: "connector"
+    connector_id: "tax_platform_api"
+    next: "end"
+
+  - id: "end"
+    name: "End"
+    type: "end"
+
+quality:
+  test_coverage: 0.75
+  risk_level: "low"
+  max_execution_minutes: 10

@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_customer_service_faq_assistant
+
+tasks:
+  - id: daily_ticket_volume_report
+    name: "Daily Ticket Volume Report"
+    description: |
+      定时任务：daily ticket volume report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - faq_auto_reply
+    required_connectors:
+      - zendesk_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: weekly_quality_score_report
+    name: "Weekly Quality Score Report"
+    description: |
+      定时任务：weekly quality score report。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - ticket_classification
+    required_connectors:
+      - freshdesk_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

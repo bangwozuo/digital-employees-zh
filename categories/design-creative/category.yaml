@@ -1,0 +1,11 @@
+id: design-creative
+name: "设计创意"
+name_en: "Design and Creative"
+description: |
+  为设计团队提供海报文案、配色建议、素材整理、设计规范检查等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - design-creative
+  - zh-cn
+  - sme

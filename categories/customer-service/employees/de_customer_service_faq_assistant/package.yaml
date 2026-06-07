@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_customer_service_faq_assistant
+name: "客服FAQ助手"
+description: |
+  基于知识库的自动化客服应答数字员工，支持多轮对话、工单自动分类、知识库自动更新和服务质量监控。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_customer_service_faq_assistant
+    name: "客服FAQ助手"
+    description: |
+      基于知识库的自动化客服应答数字员工，支持多轮对话、工单自动分类、知识库自动更新和服务质量监控。
+    business_skills:
+      - faq_auto_reply
+      - ticket_classification
+    business_connectors:
+      - zendesk_api
+      - freshdesk_api
+    scenario_workflows:
+      - ticket_routing_flow
+      - escalation_handoff_flow
+    daily_tasks:
+      - reply_to_faq_tickets
+      - classify_new_tickets
+    scheduled_tasks:
+      - daily_ticket_volume_report
+      - weekly_quality_score_report
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

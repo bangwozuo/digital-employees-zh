@@ -1,0 +1,11 @@
+id: local-life
+name: "本地生活"
+name_en: "Local Life"
+description: |
+  为本地生活服务商提供预约管理、排班优化、客户提醒、服务评价收集等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - local-life
+  - zh-cn
+  - sme

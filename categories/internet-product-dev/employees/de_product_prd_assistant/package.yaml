@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_product_prd_assistant
+name: "产品PRD助手"
+description: |
+  辅助产品经理完成PRD撰写、需求拆解、用户故事生成、技术可行性初评等产品研发核心工作。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_product_prd_assistant
+    name: "产品PRD助手"
+    description: |
+      辅助产品经理完成PRD撰写、需求拆解、用户故事生成、技术可行性初评等产品研发核心工作。
+    business_skills:
+      - prd_generation
+      - user_story_splitting
+    business_connectors:
+      - jira_api
+      - confluence_api
+    scenario_workflows:
+      - prd_to_ticket_flow
+      - sprint_planning_assist
+    daily_tasks:
+      - review_pending_prd_drafts
+      - sync_jira_status
+    scheduled_tasks:
+      - sprint_retrospective_summary
+      - weekly_product_metrics_digest
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

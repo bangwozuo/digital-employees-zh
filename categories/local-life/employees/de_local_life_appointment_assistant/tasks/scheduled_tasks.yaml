@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_local_life_appointment_assistant
+
+tasks:
+  - id: daily_occupancy_report
+    name: "Daily Occupancy Report"
+    description: |
+      定时任务：daily occupancy report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - appointment_scheduling
+    required_connectors:
+      - meituan_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: weekly_no_show_analysis
+    name: "Weekly No Show Analysis"
+    description: |
+      定时任务：weekly no show analysis。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - no_show_prevention
+    required_connectors:
+      - dianping_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

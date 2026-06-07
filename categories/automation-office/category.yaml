@@ -1,0 +1,11 @@
+id: automation-office
+name: "自动化办公"
+name_en: "Automation Office"
+description: |
+  为办公自动化场景提供表格处理、邮件批量处理、文档格式转换、流程审批等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - automation-office
+  - zh-cn
+  - sme

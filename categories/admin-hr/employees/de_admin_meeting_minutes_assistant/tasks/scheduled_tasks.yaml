@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_admin_meeting_minutes_assistant
+
+tasks:
+  - id: weekly_attendance_report
+    name: "Weekly Attendance Report"
+    description: |
+      定时任务：weekly attendance report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - meeting_minutes_generation
+    required_connectors:
+      - feishu_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_meeting_analytics
+    name: "Monthly Meeting Analytics"
+    description: |
+      定时任务：monthly meeting analytics。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - action_item_tracking
+    required_connectors:
+      - dingtalk_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

@@ -1,0 +1,11 @@
+id: legal-contract
+name: "法务合同"
+name_en: "Legal and Contract"
+description: |
+  为法务和商务团队提供合同审查、风险条款识别、合规检查、模板管理等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - legal-contract
+  - zh-cn
+  - sme

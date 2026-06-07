@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_platform_ops_skill_auditor
+
+tasks:
+  - id: daily_platform_health_report
+    name: "Daily Platform Health Report"
+    description: |
+      定时任务：daily platform health report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - skill_package_audit
+    required_connectors:
+      - platform_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: weekly_skill_quality_report
+    name: "Weekly Skill Quality Report"
+    description: |
+      定时任务：weekly skill quality report。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - content_compliance_check
+    required_connectors:
+      - moderation_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_design_poster_copy_assistant
+
+tasks:
+  - id: generate_copy_for_pending_designs
+    name: "Generate Copy For Pending Designs"
+    description: |
+      每日例行任务：generate copy for pending designs。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - poster_copy_generation
+    required_connectors:
+      - figma_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: tag_new_assets
+    name: "Tag New Assets"
+    description: |
+      每日例行任务：tag new assets。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - color_scheme_recommendation
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

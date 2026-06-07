@@ -1,0 +1,11 @@
+id: platform-ops
+name: "平台运营"
+name_en: "Platform Operations"
+description: |
+  为平台运营团队提供技能审核、内容合规、用户反馈聚合、数据监控等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - platform-ops
+  - zh-cn
+  - sme

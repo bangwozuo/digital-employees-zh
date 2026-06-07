@@ -1,0 +1,57 @@
+id: de_recruitment_resume_screener
+name: "招聘简历筛选助手"
+description: |
+  自动化简历筛选与面试协同数字员工，支持JD匹配评分、面试安排、人才画像生成和offer模板管理。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "recruitment"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: resume_parsing
+    name: "Resume Parsing"
+    required: true
+  - id: jd_matching
+    name: "Jd Matching"
+    required: false
+
+business_connectors:
+  - id: boss_zhipin_api
+    name: "Boss Zhipin Api"
+    required: true
+  - id: mokahr_api
+    name: "Mokahr Api"
+    required: false
+
+scenario_workflows:
+  - id: resume_to_interview_flow
+    name: "Resume To Interview Flow"
+    trigger_type: "manual"
+  - id: offer_generation_flow
+    name: "Offer Generation Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: screen_new_applications
+    name: "Screen New Applications"
+    estimated_duration_minutes: 15
+  - id: schedule_interviews
+    name: "Schedule Interviews"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_hiring_funnel_report
+    name: "Weekly Hiring Funnel Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_talent_pool_analysis
+    name: "Monthly Talent Pool Analysis"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

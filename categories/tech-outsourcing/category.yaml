@@ -1,0 +1,11 @@
+id: tech-outsourcing
+name: "技术外包"
+name_en: "Tech Outsourcing"
+description: |
+  为外包需求方和服务商提供需求文档规范化、报价评估、交付物验收、风险预警等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - tech-outsourcing
+  - zh-cn
+  - sme

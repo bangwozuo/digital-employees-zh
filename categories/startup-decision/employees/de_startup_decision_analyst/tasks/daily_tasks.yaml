@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_startup_decision_analyst
+
+tasks:
+  - id: scan_competitor_news
+    name: "Scan Competitor News"
+    description: |
+      每日例行任务：scan competitor news。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - competitor_intelligence
+    required_connectors:
+      - crunchbase_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: update_funding_landscape
+    name: "Update Funding Landscape"
+    description: |
+      每日例行任务：update funding landscape。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - pitch_deck_review
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

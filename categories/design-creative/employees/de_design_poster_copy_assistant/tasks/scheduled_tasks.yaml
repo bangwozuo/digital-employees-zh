@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_design_poster_copy_assistant
+
+tasks:
+  - id: weekly_brand_consistency_report
+    name: "Weekly Brand Consistency Report"
+    description: |
+      定时任务：weekly brand consistency report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - poster_copy_generation
+    required_connectors:
+      - figma_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_asset_usage_analysis
+    name: "Monthly Asset Usage Analysis"
+    description: |
+      定时任务：monthly asset usage analysis。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - color_scheme_recommendation
+    required_connectors:
+      - canva_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

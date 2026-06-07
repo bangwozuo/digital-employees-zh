@@ -1,0 +1,57 @@
+id: de_design_poster_copy_assistant
+name: "设计海报文案助手"
+description: |
+  辅助设计师和创意团队的数字化助手，支持海报文案生成、配色方案推荐、素材标签管理和设计规范检查。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "design-creative"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: poster_copy_generation
+    name: "Poster Copy Generation"
+    required: true
+  - id: color_scheme_recommendation
+    name: "Color Scheme Recommendation"
+    required: false
+
+business_connectors:
+  - id: figma_api
+    name: "Figma Api"
+    required: true
+  - id: canva_api
+    name: "Canva Api"
+    required: false
+
+scenario_workflows:
+  - id: brief_to_concept_flow
+    name: "Brief To Concept Flow"
+    trigger_type: "manual"
+  - id: design_review_flow
+    name: "Design Review Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: generate_copy_for_pending_designs
+    name: "Generate Copy For Pending Designs"
+    estimated_duration_minutes: 15
+  - id: tag_new_assets
+    name: "Tag New Assets"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_brand_consistency_report
+    name: "Weekly Brand Consistency Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_asset_usage_analysis
+    name: "Monthly Asset Usage Analysis"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

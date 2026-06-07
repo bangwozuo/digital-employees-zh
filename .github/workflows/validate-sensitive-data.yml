@@ -1,0 +1,56 @@
+name: Validate Sensitive Data
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  validate-sensitive-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Scan for sensitive data
+        run: |
+          python -c "
+import os, sys, re
+from pathlib import Path
+errors = []
+patterns = [
+    (r'sk-[a-zA-Z0-9]{48,}', 'OpenAI API key'),
+    (r'ghp_[a-zA-Z0-9]{36}', 'GitHub personal access token'),
+    (r'glpat-[a-zA-Z0-9\-]{20}', 'GitLab token'),
+    (r'AKID[a-zA-Z0-9]{32}', 'Tencent Cloud AKID'),
+    (r'1[3-9]\d{9}', 'Chinese mobile number'),
+    (r'\b(?:password|passwd|pwd)\s*[=:]\s*["'][^"']{4,}["']', 'Hardcoded password'),
+    (r'\b(?:secret|token|cookie)\s*[=:]\s*["'][^"']{8,}["']', 'Hardcoded secret/token/cookie'),
+]
+scan_exts = {'.py', '.js', '.ts', '.yaml', '.yml', '.json', '.md', '.sh', '.env', '.txt', '.cfg', '.ini'}
+for p in Path('.').rglob('*'):
+    if '.git' in str(p) or 'node_modules' in str(p) or p.is_dir():
+        continue
+    if p.suffix.lower() not in scan_exts:
+        continue
+    try:
+        text = p.read_text(encoding='utf-8', errors='ignore')
+    except:
+        continue
+    for pattern, desc in patterns:
+        for m in re.finditer(pattern, text):
+            line = text[:m.start()].count('\n') + 1
+            errors.append(f'{p}:line{line}: possible {desc}')
+            print(f'SENSITIVE: {p}:line{line}: possible {desc}')
+if errors:
+    print(f'\n{len(errors)} sensitive data match(es) found')
+    sys.exit(1)
+else:
+    print('\nNo sensitive data detected')
+"
+      - name: Report failure
+        if: failure()
+        run: echo '::error::Sensitive data scan failed. Check logs above for matches.'

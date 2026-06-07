@@ -1,0 +1,57 @@
+id: de_local_life_appointment_assistant
+name: "本地生活预约助手"
+description: |
+  面向美容、健身、教育、医疗等本地生活场景的预约管理数字员工，支持智能排班、到店提醒和满意度回访。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "local-life"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: appointment_scheduling
+    name: "Appointment Scheduling"
+    required: true
+  - id: no_show_prevention
+    name: "No Show Prevention"
+    required: false
+
+business_connectors:
+  - id: meituan_api
+    name: "Meituan Api"
+    required: true
+  - id: dianping_api
+    name: "Dianping Api"
+    required: false
+
+scenario_workflows:
+  - id: appointment_confirmation_flow
+    name: "Appointment Confirmation Flow"
+    trigger_type: "manual"
+  - id: no_show_recovery_flow
+    name: "No Show Recovery Flow"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: confirm_next_day_appointments
+    name: "Confirm Next Day Appointments"
+    estimated_duration_minutes: 15
+  - id: send_reminder_messages
+    name: "Send Reminder Messages"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: daily_occupancy_report
+    name: "Daily Occupancy Report"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: weekly_no_show_analysis
+    name: "Weekly No Show Analysis"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

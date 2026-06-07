@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_customer_service_faq_assistant
+
+tasks:
+  - id: reply_to_faq_tickets
+    name: "Reply To Faq Tickets"
+    description: |
+      每日例行任务：reply to faq tickets。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - faq_auto_reply
+    required_connectors:
+      - zendesk_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: classify_new_tickets
+    name: "Classify New Tickets"
+    description: |
+      每日例行任务：classify new tickets。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - ticket_classification
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

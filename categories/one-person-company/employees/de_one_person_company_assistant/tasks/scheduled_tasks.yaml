@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_one_person_company_assistant
+
+tasks:
+  - id: weekly_finance_report
+    name: "Weekly Finance Report"
+    description: |
+      定时任务：weekly finance report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - content_drafting
+    required_connectors:
+      - wechat_official
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_client_retention_analysis
+    name: "Monthly Client Retention Analysis"
+    description: |
+      定时任务：monthly client retention analysis。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - client_follow_up
+    required_connectors:
+      - notion_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

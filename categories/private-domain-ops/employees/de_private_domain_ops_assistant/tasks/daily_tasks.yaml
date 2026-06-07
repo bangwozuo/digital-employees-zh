@@ -1,0 +1,36 @@
+daily_tasks_version: "1.0"
+digital_employee_id: de_private_domain_ops_assistant
+
+tasks:
+  - id: execute_daily_sop_tasks
+    name: "Execute Daily Sop Tasks"
+    description: |
+      每日例行任务：execute daily sop tasks。
+    priority: "high"
+    estimated_duration_minutes: 15
+    required_skills:
+      - community_sop_execution
+    required_connectors:
+      - wechat_work_api
+    checklist:
+      - "检查输入数据完整性"
+      - "执行业务逻辑"
+      - "记录执行日志"
+    auto_execute: true
+    fallback_action: "notify_admin"
+
+  - id: update_user_tags
+    name: "Update User Tags"
+    description: |
+      每日例行任务：update user tags。
+    priority: "medium"
+    estimated_duration_minutes: 10
+    required_skills:
+      - user_segmentation
+    required_connectors: []
+    checklist:
+      - "准备素材"
+      - "执行生成"
+      - "审核输出"
+    auto_execute: false
+    fallback_action: "skip_and_log"

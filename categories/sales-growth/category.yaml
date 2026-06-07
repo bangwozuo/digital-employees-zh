@@ -1,0 +1,11 @@
+id: sales-growth
+name: "销售增长"
+name_en: "Sales Growth"
+description: |
+  为销售团队提供线索挖掘、客户画像、跟进提醒、报价生成等数字员工能力。
+version: "1.0.0"
+author: "digital-employee-community"
+tags:
+  - sales-growth
+  - zh-cn
+  - sme

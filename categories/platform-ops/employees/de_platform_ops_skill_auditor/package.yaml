@@ -1,0 +1,42 @@
+package_manifest_version: "2.0"
+id: de_platform_ops_skill_auditor
+name: "平台运营技能审核助手"
+description: |
+  面向数字员工平台运营团队的审核与监控助手，支持技能资产包审核、内容合规检查、用户反馈聚合和平台数据监控。
+version: "1.0.0"
+author: "digital-employee-community"
+license: "CC-BY-4.0"
+language: "zh-cn"
+status: "stable"
+
+digital_employees:
+  - id: de_platform_ops_skill_auditor
+    name: "平台运营技能审核助手"
+    description: |
+      面向数字员工平台运营团队的审核与监控助手，支持技能资产包审核、内容合规检查、用户反馈聚合和平台数据监控。
+    business_skills:
+      - skill_package_audit
+      - content_compliance_check
+    business_connectors:
+      - platform_api
+      - moderation_api
+    scenario_workflows:
+      - skill_submission_review_flow
+      - compliance_alert_flow
+    daily_tasks:
+      - review_pending_skill_submissions
+      - scan_compliance_violations
+    scheduled_tasks:
+      - daily_platform_health_report
+      - weekly_skill_quality_report
+
+quality_report:
+  overall_score: 0.88
+  risk_level: "low"
+  test_coverage: 0.85
+  manifest_completeness: 1.0
+  structure_compliance: 1.0
+  reference_integrity: 1.0
+  naming_compliance: 1.0
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

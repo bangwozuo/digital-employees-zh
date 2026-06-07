@@ -1,0 +1,39 @@
+scheduled_tasks_version: "1.0"
+digital_employee_id: de_data_analysis_daily_report_assistant
+
+tasks:
+  - id: weekly_trend_report
+    name: "Weekly Trend Report"
+    description: |
+      定时任务：weekly trend report。
+    priority: "high"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 30
+    required_skills:
+      - daily_report_generation
+    required_connectors:
+      - mysql_connector
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 3
+      backoff_seconds: 60
+
+  - id: monthly_kpi_board_update
+    name: "Monthly Kpi Board Update"
+    description: |
+      定时任务：monthly kpi board update。
+    priority: "medium"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+    estimated_duration_minutes: 45
+    required_skills:
+      - anomaly_detection
+    required_connectors:
+      - bigquery_api
+    auto_execute: true
+    fallback_action: "notify_admin"
+    retry_policy:
+      max_retries: 2
+      backoff_seconds: 300

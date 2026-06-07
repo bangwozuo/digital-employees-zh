@@ -1,0 +1,57 @@
+id: de_product_prd_assistant
+name: "产品PRD助手"
+description: |
+  辅助产品经理完成PRD撰写、需求拆解、用户故事生成、技术可行性初评等产品研发核心工作。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "internet-product-dev"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: prd_generation
+    name: "Prd Generation"
+    required: true
+  - id: user_story_splitting
+    name: "User Story Splitting"
+    required: false
+
+business_connectors:
+  - id: jira_api
+    name: "Jira Api"
+    required: true
+  - id: confluence_api
+    name: "Confluence Api"
+    required: false
+
+scenario_workflows:
+  - id: prd_to_ticket_flow
+    name: "Prd To Ticket Flow"
+    trigger_type: "manual"
+  - id: sprint_planning_assist
+    name: "Sprint Planning Assist"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: review_pending_prd_drafts
+    name: "Review Pending Prd Drafts"
+    estimated_duration_minutes: 15
+  - id: sync_jira_status
+    name: "Sync Jira Status"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: sprint_retrospective_summary
+    name: "Sprint Retrospective Summary"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: weekly_product_metrics_digest
+    name: "Weekly Product Metrics Digest"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"

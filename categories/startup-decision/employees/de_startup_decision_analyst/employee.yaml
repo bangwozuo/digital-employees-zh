@@ -1,0 +1,57 @@
+id: de_startup_decision_analyst
+name: "创业决策分析师"
+description: |
+  基于市场数据和行业情报，为创业者提供竞品分析、融资BP优化、商业模式验证等决策支持。
+version: "1.0.0"
+author: "digital-employee-community"
+category: "startup-decision"
+language: "zh-cn"
+status: "stable"
+
+business_skills:
+  - id: competitor_intelligence
+    name: "Competitor Intelligence"
+    required: true
+  - id: pitch_deck_review
+    name: "Pitch Deck Review"
+    required: false
+
+business_connectors:
+  - id: crunchbase_api
+    name: "Crunchbase Api"
+    required: true
+  - id: tianyancha_api
+    name: "Tianyancha Api"
+    required: false
+
+scenario_workflows:
+  - id: weekly_competitor_digest
+    name: "Weekly Competitor Digest"
+    trigger_type: "manual"
+  - id: funding_readiness_check
+    name: "Funding Readiness Check"
+    trigger_type: "scheduled"
+
+daily_tasks:
+  - id: scan_competitor_news
+    name: "Scan Competitor News"
+    estimated_duration_minutes: 15
+  - id: update_funding_landscape
+    name: "Update Funding Landscape"
+    estimated_duration_minutes: 10
+
+scheduled_tasks:
+  - id: weekly_investor_update
+    name: "Weekly Investor Update"
+    cron_expression: "0 9 * * 1"
+    timezone: "Asia/Shanghai"
+  - id: monthly_strategy_review
+    name: "Monthly Strategy Review"
+    cron_expression: "0 10 1 * *"
+    timezone: "Asia/Shanghai"
+
+quality:
+  risk_level: "low"
+  test_coverage: 0.85
+  last_validated: "2024-01-01T00:00:00Z"
+  validator_version: "devkit-0.2.0"
