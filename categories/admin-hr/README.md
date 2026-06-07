@@ -62,7 +62,7 @@
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/your-org/digital-employees-zh.git
+git clone https://github.com/bangwozuo/digital-employees-zh.git
 
 # 2. 进入资产包目录
 cd digital-employees-zh/categories/admin-hr/employees/de_admin_meeting_minutes_assistant

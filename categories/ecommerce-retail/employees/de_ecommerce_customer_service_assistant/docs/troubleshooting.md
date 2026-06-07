@@ -45,5 +45,5 @@
 ## 获取进一步帮助
 
 - 查看平台官方文档：https://docs.digital-employee.dev
-- 提交 Issue：https://github.com/your-org/digital-employees-zh/issues
+- 提交 Issue：https://github.com/bangwozuo/digital-employees-zh/issues
 - 社区讨论：https://discord.gg/digital-employee
